@@ -1,0 +1,12 @@
+{
+   "version": 2,
+   "name": "MUSIC-APP-BACKEND",
+   "builds": [{ 
+        "src": "build/server.js", 
+        "use": "@vercel/node" 
+    }],
+   "routes": [{ 
+        "src": "/(.*)", 
+        "dest": "build/server.js" 
+    }]
+}
