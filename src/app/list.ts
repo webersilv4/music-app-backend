@@ -9,16 +9,19 @@ export const listMusics = async (req: Request, res: Response) => {
     }).catch(err => console.log(err));
 };
 
+export const listenToMusic = async (req: Request, res: Response) => {
+
+    const { id } = req.params;
+
+    await musicsSchema.findOne({ '_id': id })
+        .then((r)=> {
+            res.status(200).json(r);
+        }).catch(err => res.status(400).json({ message: err.message.message }));
+};
+
 // CRIA E INSERE AS MUSICA NO DB
 export const insertOneMusic = async (req: Request, res: Response) => {
-    await musicsSchema.create({
-        'title': 'Saudade do tempo',
-        'album': 'Viva',
-        'image': 'image.png',
-        'link': 'https://dcs.megaphone.fm/ROOSTER2214960577.mp3?key=2c02f49702ffbbbe2d05de4c90cc1ef5&request_event_id=9ca20d20-ad48-4a0a-b235-34815362c1bf',
-        'artist': 'maneva',
-        'type': 'music'
-    })
+    await musicsSchema.create(req.body)
         .then((r)=> {
             res.json(r);
         }).catch(err => console.log(err));

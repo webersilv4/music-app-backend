@@ -1,0 +1,18 @@
+[{
+    "artist": "Henrique e juliano",
+    "albums": [{
+        "novas_historias": [
+            [{ 
+                "title": "Titulo da musica",
+                "image": "https://image.com",
+                "link": "http://music.com"
+            }],
+
+            [{ 
+                "title": "Titulo da musica 2",
+                "image": "https://image.com",
+                "link": "http://music.com"
+            }]
+    ]
+    }]
+}]
