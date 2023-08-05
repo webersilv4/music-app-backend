@@ -15,7 +15,7 @@ export const listenToMusic = async (req: Request, res: Response) => {
 
     await musicsSchema.findOne({ '_id': id })
         .then((r)=> {
-            res.status(200).json(r);
+            res.status(200).json([r]);
         }).catch(err => res.status(400).json({ message: err.message.message }));
 };
 
