@@ -63,7 +63,7 @@ var listenToMusic = function (req, res) { return __awaiter(void 0, void 0, void 
             id = req.params.id;
             return [4 /*yield*/, musics_schema_1.default.findOne({ '_id': id })
                 .then(function (r) {
-                    res.status(200).json(r);
+                    res.status(200).json([r]);
                 }).catch(function (err) { return res.status(400).json({ message: err.message.message }); })];
         case 1:
             _a.sent();
