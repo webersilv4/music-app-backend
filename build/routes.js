@@ -1,14 +1,15 @@
-"use strict";
+'use strict';
 var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+    return (mod && mod.__esModule) ? mod : { 'default': mod };
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var dotenv_1 = __importDefault(require("dotenv"));
+Object.defineProperty(exports, '__esModule', { value: true });
+var dotenv_1 = __importDefault(require('dotenv'));
 dotenv_1.default.config();
-var express_1 = __importDefault(require("express"));
-var cors_1 = __importDefault(require("cors"));
-var list_1 = require("./app/list");
+var express_1 = __importDefault(require('express'));
+var cors_1 = __importDefault(require('cors'));
+var list_1 = require('./app/list');
 var app = (0, express_1.default)();
+app.use(express_1.default.json());
 app.use((0, cors_1.default)({
     'origin': '*',
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -16,5 +17,6 @@ app.use((0, cors_1.default)({
     'optionsSuccessStatus': 204
 }));
 app.get('/list', list_1.listMusics);
+app.get('/listen-to-music/:id', list_1.listenToMusic);
 app.post('/create', list_1.insertOneMusic);
 exports.default = app;
