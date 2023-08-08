@@ -79,7 +79,7 @@ var createNewAlbum = function (req, res) { return __awaiter(void 0, void 0, void
         case 0: return [4 /*yield*/, musics_schema_1.default.create(req.body)
             .then(function (r) {
                 res.json(r);
-            }).catch(function (err) { return console.log(err); })];
+            }).catch(function () { return res.status(400).json({ err: 'Já existe um album deste artista' }); })];
         case 1:
             _a.sent();
             return [2 /*return*/];

@@ -25,7 +25,7 @@ export const createNewAlbum = async (req: Request, res: Response) => {
     await musicsSchema.create(req.body)
         .then((r)=> {
             res.json(r);
-        }).catch(err => console.log(err));
+        }).catch(()=> res.status(400).json({err: 'Já existe um album deste artista'}));
 };
 
 
