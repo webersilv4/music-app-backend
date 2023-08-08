@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { 'default': mod };
 };
 Object.defineProperty(exports, '__esModule', { value: true });
-exports.insertOneMusic = exports.listenToMusic = exports.listMusics = void 0;
+exports.insertMusicIntoAlbum = exports.createNewAlbum = exports.listOneMusic = exports.listMusics = void 0;
 var musics_schema_1 = __importDefault(require('../database/schemas/musics.schema'));
 // FAZ A LSIATGEM DAS MUSICAS SEM FILTROS
 var listMusics = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
@@ -55,7 +55,7 @@ var listMusics = function (req, res) { return __awaiter(void 0, void 0, void 0, 
     });
 }); };
 exports.listMusics = listMusics;
-var listenToMusic = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+var listOneMusic = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var id;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -71,9 +71,9 @@ var listenToMusic = function (req, res) { return __awaiter(void 0, void 0, void 
         }
     });
 }); };
-exports.listenToMusic = listenToMusic;
+exports.listOneMusic = listOneMusic;
 // CRIA E INSERE AS MUSICA NO DB
-var insertOneMusic = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+var createNewAlbum = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
         case 0: return [4 /*yield*/, musics_schema_1.default.create(req.body)
@@ -86,4 +86,25 @@ var insertOneMusic = function (req, res) { return __awaiter(void 0, void 0, void
         }
     });
 }); };
-exports.insertOneMusic = insertOneMusic;
+exports.createNewAlbum = createNewAlbum;
+var insertMusicIntoAlbum = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, id, songLink, songTitle, timeInMilliseconds;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+        case 0:
+            _a = req.body, id = _a.id, songLink = _a.songLink, songTitle = _a.songTitle, timeInMilliseconds = _a.timeInMilliseconds;
+            return [4 /*yield*/, musics_schema_1.default.findOneAndUpdate({ id: id }, { $addToSet: { musics: {
+                songLink: songLink,
+                songTitle: songTitle,
+                timeInMilliseconds: timeInMilliseconds
+            } } })
+                .then(function (r) {
+                    res.json(r);
+                }).catch(function (err) { return res.json(err); })];
+        case 1:
+            _b.sent();
+            return [2 /*return*/];
+        }
+    });
+}); };
+exports.insertMusicIntoAlbum = insertMusicIntoAlbum;

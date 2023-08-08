@@ -1,18 +1,51 @@
 [{
     "artist": "Henrique e juliano",
+    
     "albums": [{
         "novas_historias": [
+            {"infoAlbum": {"title": "Novas Historias", "image": "image-album.png"}},
             [{ 
                 "title": "Titulo da musica",
-                "image": "https://image.com",
                 "link": "http://music.com"
             }],
 
             [{ 
                 "title": "Titulo da musica 2",
-                "image": "https://image.com",
                 "link": "http://music.com"
             }]
     ]
     }]
 }]
+
+
+{
+    "_id": "64ce871e8511316ddfd4ed06",
+    "artist": "Henrique & juliano",
+    "musics": [
+        {
+            "id": "3ade68b8g6d2350b3",
+            "desc": "Gordinho Saliente",
+            "url": "\/henrique-e-juliano\/gordinho-saliente.html"
+        },
+    ],
+    "album": "Novas historias",
+    "image": "https://app-music-api-pure-javascript.vercel.app/images/0aed5d740d7fab4201e885019a36eace.jpg",
+    "link": "https://app-music-api-pure-javascript.vercel.app/music/0aed5d740d7fab4201e885019a36eace.mp3",
+    "type": "music",
+    "albumId": "def430uf398jncn3289n",
+    "__v": 0
+}
+
+{
+    "_id": "64ce871e8511316ddfd4ed06",
+    "title": "Compensa me amar",
+    "album": "Novas historias",
+    "image": "https://app-music-api-pure-javascript.vercel.app/images/0aed5d740d7fab4201e885019a36eace.jpg",
+    "link": "https://app-music-api-pure-javascript.vercel.app/music/0aed5d740d7fab4201e885019a36eace.mp3",
+    "artist": "Henrique & juliano",
+    "type": "music",
+    "albumId": "def430uf398jncn3289n",
+    "__v": 0
+}
+
+

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import musicsSchema from '../database/schemas/musics.schema';
 
+import { IinsertNewSound } from '../../@types';
 
 // FAZ A LSIATGEM DAS MUSICAS SEM FILTROS
 export const listMusics = async (req: Request, res: Response) => {
@@ -9,7 +10,7 @@ export const listMusics = async (req: Request, res: Response) => {
     }).catch(err => console.log(err));
 };
 
-export const listenToMusic = async (req: Request, res: Response) => {
+export const listOneMusic = async (req: Request, res: Response) => {
 
     const { id } = req.params;
 
@@ -20,11 +21,27 @@ export const listenToMusic = async (req: Request, res: Response) => {
 };
 
 // CRIA E INSERE AS MUSICA NO DB
-export const insertOneMusic = async (req: Request, res: Response) => {
+export const createNewAlbum = async (req: Request, res: Response) => {
     await musicsSchema.create(req.body)
         .then((r)=> {
             res.json(r);
         }).catch(err => console.log(err));
+};
+
+
+export const insertMusicIntoAlbum = async (req: Request, res: Response) => {
+    
+    const { id, songLink, songTitle, timeInMilliseconds }: IinsertNewSound = req.body;
+    
+    await musicsSchema.findOneAndUpdate({ id }, 
+        { $addToSet: { musics: { 
+            songLink, 
+            songTitle, 
+            timeInMilliseconds 
+        }} })
+        .then((r)=> {
+            res.json(r);
+        }).catch(err => res.json(err));
 };
 
 

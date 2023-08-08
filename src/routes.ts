@@ -3,7 +3,7 @@ dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
-import { insertOneMusic, listMusics, listenToMusic } from './app/list';
+import { createNewAlbum, listMusics, listOneMusic, insertMusicIntoAlbum } from './app/list';
 
 const app = express();
 
@@ -17,10 +17,12 @@ app.use(cors({
 
 
 app.get('/list', listMusics);
-app.get('/listen-to-music/:id', listenToMusic);
+app.get('/listen-to-music/:id', listOneMusic);
 
 
-app.post('/create', insertOneMusic);
+app.post('/create-new-album', createNewAlbum);
+app.put('/insert-music-in-album', insertMusicIntoAlbum);
+
 
 
 

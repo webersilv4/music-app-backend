@@ -6,11 +6,15 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var mongoose_1 = __importDefault(require('mongoose'));
 require('../database');
 var musicSchema = new mongoose_1.default.Schema({
-    title: { type: String, require: true },
-    album: { type: String, require: true },
-    image: { type: String, require: true },
-    link: { type: String, require: true },
     artist: { type: String, require: true },
+    albumTitle: { type: String, require: true, unique: true },
+    albumImage: { type: String, require: true },
+    musics: [{
+        songTitle: { type: String, require: true },
+        songLink: { type: String, require: true },
+        timeInMilliseconds: { type: Number }
+    }],
+    genre: { type: String, require: true },
     type: { type: String, require: true },
 });
 exports.default = mongoose_1.default.model('musics', musicSchema);
