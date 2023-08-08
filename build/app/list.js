@@ -39,14 +39,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { 'default': mod };
 };
 Object.defineProperty(exports, '__esModule', { value: true });
-exports.insertMusicIntoAlbum = exports.createNewAlbum = exports.listOneMusic = exports.listMusics = void 0;
+exports.insertMusicIntoAlbum = exports.createNewAlbum = exports.listOneMusic = exports.listMusics = exports.listAlbums = void 0;
 var musics_schema_1 = __importDefault(require('../database/schemas/musics.schema'));
 // FAZ A LSIATGEM DAS MUSICAS SEM FILTROS
-var listMusics = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+var listAlbums = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
         case 0: return [4 /*yield*/, musics_schema_1.default.find().then(function (r) {
             res.status(200).json(r);
+        }).catch(function (err) { return console.log(err); })];
+        case 1:
+            _a.sent();
+            return [2 /*return*/];
+        }
+    });
+}); };
+exports.listAlbums = listAlbums;
+// FAZ A LSIATGEM DAS MUSICAS SEM FILTROS
+var listMusics = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+        case 0: return [4 /*yield*/, musics_schema_1.default.find().then(function (response) {
+            var result = [];
+            response.forEach(function (element) {
+                result.push(element.musics[0]);
+            });
+            res.status(200).json(result);
         }).catch(function (err) { return console.log(err); })];
         case 1:
             _a.sent();

@@ -1,14 +1,26 @@
 import { Request, Response } from 'express';
 import musicsSchema from '../database/schemas/musics.schema';
 
-import { IinsertNewSound } from '../../@types';
+import { IListMusics, IinsertNewSound } from '../../@types';
 
 // FAZ A LSIATGEM DAS MUSICAS SEM FILTROS
-export const listMusics = async (req: Request, res: Response) => {
+export const listAlbums = async (req: Request, res: Response) => {
     await musicsSchema.find().then((r)=> {
         res.status(200).json(r);
     }).catch(err => console.log(err));
 };
+
+// FAZ A LSIATGEM DAS MUSICAS SEM FILTROS
+export const listMusics = async (req: Request, res: Response) => {
+    await musicsSchema.find().then((response:Array<IListMusics>)=> {
+        const result: Array<object> = [];
+        response.forEach((element)=>{
+            result.push(element.musics[0]);
+        });
+        res.status(200).json(result);
+    }).catch(err => console.log(err));
+};
+
 
 export const listOneMusic = async (req: Request, res: Response) => {
 

@@ -18,3 +18,11 @@ export interface IinsertNewSound {
 	songLink: string | any
 	timeInMilliseconds: number | any
 }
+
+export interface IListMusics {
+	musics: Array<any>[{     
+        songTitle: string 
+        songLink: string
+        timeInMilliseconds?: string
+    }]
+}

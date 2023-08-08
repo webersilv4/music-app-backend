@@ -16,7 +16,8 @@ app.use((0, cors_1.default)({
     'preflightContinue': false,
     'optionsSuccessStatus': 204
 }));
-app.get('/list', list_1.listMusics);
+app.get('/list-albums', list_1.listAlbums);
+app.get('/list-musics', list_1.listMusics);
 app.get('/listen-to-music/:id', list_1.listOneMusic);
 app.post('/create-new-album', list_1.createNewAlbum);
 app.put('/insert-music-in-album', list_1.insertMusicIntoAlbum);
