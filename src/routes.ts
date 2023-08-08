@@ -5,10 +5,9 @@ import express from 'express';
 import cors from 'cors';
 import { 
     createNewAlbum, 
-    listAlbums, 
+    listMusics, 
     listOneMusic, 
-    insertMusicIntoAlbum, 
-    listMusics 
+    insertMusicIntoAlbum 
 } from './app/list';
 
 const app = express();
@@ -22,8 +21,8 @@ app.use(cors({
 }));
 
 
-app.get('/list-albums', listAlbums);
 app.get('/list-musics', listMusics);
+// app.get('/list-musics', listMusics);
 app.get('/listen-to-music/:id', listOneMusic);
 
 

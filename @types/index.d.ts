@@ -19,10 +19,10 @@ export interface IinsertNewSound {
 	timeInMilliseconds: number | any
 }
 
-export interface IListMusics {
-	musics: Array<any>[{     
-        songTitle: string 
-        songLink: string
-        timeInMilliseconds?: string
-    }]
-}
+// export interface IListMusics {
+// 	musics: Array<any>[{     
+//         songTitle: string 
+//         songLink: string
+//         timeInMilliseconds?: string
+//     }]
+// }
